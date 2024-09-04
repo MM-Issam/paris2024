@@ -50,7 +50,10 @@
                     <tr>             
                         <th>id</th>
                         <th>nom</th>             
-                        <th>pays</th>                
+                        <th>Prenom</th>                
+                        <th>pays</th>    
+                        <th>Date de Naissance</th>                
+
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +70,15 @@
                                 out.println("</a></td>");;                        
                            
                                 out.println("<td>");
+                                out.println(a.getPrenom());
+                                out.println("</td>");
+                               
+                                out.println("<td>");
                                 out.println(a.getPays().getNom());
+                                out.println("</td>");
+                                
+                               out.println("<td>");
+                                out.println(a.getDateNaiss());
                                 out.println("</td>");
                                
                             }
