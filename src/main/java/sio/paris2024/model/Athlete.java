@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sio.paris2024.model;
+import java.time.LocalDate;
 
 /**
  *
@@ -11,14 +12,32 @@ package sio.paris2024.model;
 public class Athlete {
     
     private int id;
+    private LocalDate DateNaiss;
     private String nom ;
     private Pays pays ;
+    private String prenom;
     public Athlete() {
     }
 
     public Athlete(int id, String nom) {
         this.id = id;
         this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public LocalDate getDateNaiss() {
+        return DateNaiss;
+    }
+
+    public void setDateNaiss(LocalDate DateNaiss) {
+        this.DateNaiss = DateNaiss;
     }
 
     public int getId() {
