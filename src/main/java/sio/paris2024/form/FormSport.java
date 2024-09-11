@@ -60,7 +60,6 @@ public class FormSport {
         Sport ath  = new Sport();
          
         String nom = getDataForm( request, "nom" );
-        int idPays = Integer.parseInt((String)getDataForm( request, "idPays" ));
        
       
         try {
