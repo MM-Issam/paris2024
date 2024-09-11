@@ -104,6 +104,11 @@ public class ServletSport extends HttpServlet {
            getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
         }
         
+         if(url.equals("/paris2024/ServletSport/ajouter"))
+        {                   
+            this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
+        }
+        
   
        
         
@@ -125,16 +130,16 @@ public class ServletSport extends HttpServlet {
          FormSport form = new FormSport();
 		
         /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
-        Sport ath = form.ajouterSport(request);
+        Sport spt = form.ajouterSport(request);
         
         /* Stockage du formulaire et de l'objet dans l'objet request */
         request.setAttribute( "form", form );
-        request.setAttribute( "pSport", ath );
+        request.setAttribute( "pSport", spt );
 		
         if (form.getErreurs().isEmpty()){
-            Sport athleteInsere =  DaoSport.addSport(cnx, ath);
-            if (athleteInsere != null ){
-                request.setAttribute( "pSport", athleteInsere );
+            Sport sportInsere =  DaoSport.addSport(cnx, spt);
+            if (sportInsere != null ){
+                request.setAttribute( "pSport", sportInsere );
                 this.getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp" ).forward( request, response );
             }
             else 
@@ -146,9 +151,6 @@ public class ServletSport extends HttpServlet {
         }
         else
         { 
-            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
-            ArrayList<Pays> lesCasernes = DaoPays.getLesPays(cnx);
-            request.setAttribute("pLesPays", lesCasernes);
             this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
         }
         
