@@ -51,12 +51,12 @@ public class Sport {
         this.lesSports = lesSports;
     }
     
-    public void addSport(Sport a){
+    public void addSport(Sport s){
         
         if (lesSports == null){
             lesSports = new ArrayList<Sport>();
         }
-        lesSports.add(a);
+        lesSports.add(s);
     }
     
 }
