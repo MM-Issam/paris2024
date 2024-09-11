@@ -87,7 +87,7 @@ public class ServletSport extends HttpServlet {
         String url = request.getRequestURI();  
        
         // Récup et affichage les athletes 
-        if(url.equals("/paris2024/ServletSport/lister"))
+        if(url.equals("/paris2024/ServletSport/listerSport"))
         {              
             ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
             request.setAttribute("pLesSports", lesSports);
@@ -95,11 +95,11 @@ public class ServletSport extends HttpServlet {
            getServletContext().getRequestDispatcher("/vues/sport/listerSport.jsp").forward(request, response);
         }
         
-        if(url.equals("/paris2024/ServletSport/consulter"))
+        if(url.equals("/paris2024/ServletSport/consulterSport"))
         { 
             int idSport = Integer.parseInt((String)request.getParameter("idSport"));
-            Sport a = DaoSport.getSportById(cnx, idSport);
-            request.setAttribute("pSport", a);
+            Sport s = DaoSport.getSportById(cnx, idSport);
+            request.setAttribute("pSport", s);
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
         }
