@@ -9,8 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import sio.paris2024.model.Epreuve;
 import sio.paris2024.model.Sport;
-import sio.paris2024.model.Pays;
 
 /**
  *
@@ -50,38 +50,41 @@ public class DaoSport {
     
     
     
-    public static Sport getSportById(Connection cnx, int idSport)
-             
-        {
-        
+       public static Sport getSportById(Connection cnx, int idSport) {
         Sport s = new Sport();
-        try{
-            requeteSql = cnx.prepareStatement("select s.id as s_id, s.nom as s_nom from sport s where s.id = ?;");
-            
-            //System.out.println("REQ="+ requeteSql);
+        ArrayList<Epreuve> epreuves = new ArrayList<>();
+        try {
+            requeteSql = cnx.prepareStatement("select s.id as s_id, s.nom as s_nom, e.id as e_id, e.nom as e_nom " +
+                         "from sport s inner join epreuve e " +
+                         "on s.id = e.sport_id " +
+                         "where s.id = ?");
             requeteSql.setInt(1, idSport);
             resultatRequete = requeteSql.executeQuery();
-            
-            while (resultatRequete.next()){ 
-                   s.setId(resultatRequete.getInt("s_id"));
-                   s.setNom(resultatRequete.getString("s_nom"));  
-                   
+
+            while (resultatRequete.next()) {
+                if (s.getId() == 0) {
+                    s.setId(resultatRequete.getInt("s_id"));
+                    s.setNom(resultatRequete.getString("s_nom"));
+                }
+                Epreuve e = new Epreuve();
+                e.setId(resultatRequete.getInt("e_id"));
+                e.setNom(resultatRequete.getString("e_nom"));
+                epreuves.add(e);
             }
-           
-        }
-        catch (SQLException e){
+            s.setLesEpreuves(epreuves);
+        } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("La requête de getLesPompiers e généré une erreur");
+            System.out.println("La requête de getSportById a généré une erreur");
         }
         return s;
-    };
+    }
     
      public static Sport addSport(Connection connection, Sport spo){      
         int idGenere = -1;
         try
         {
             //preparation de la requete
-            // id (clé primaire de la table athlete) est en auto_increment,donc on ne renseigne pas cette valeur
+            // id (clé primaire de la table epreuve) est en auto_increment,donc on ne renseigne pas cette valeur
             // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
             // supprimer ce paramètre en cas de requête sans auto_increment.
             requeteSql=connection.prepareStatement("INSERT INTO sport (nom)\n" +
