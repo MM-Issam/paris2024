@@ -13,8 +13,9 @@ import java.util.ArrayList;
 public class Sport {
     private int id;
     private String nom ;
+    private ArrayList<Epreuve> lesEpreuves;
     private ArrayList<Sport> lesSports ;
-
+    private Epreuve epreuve;
     public Sport() {
     }
 
@@ -57,6 +58,22 @@ public class Sport {
             lesSports = new ArrayList<Sport>();
         }
         lesSports.add(s);
+    }
+
+    public ArrayList<Epreuve> getLesEpreuves() {
+        return lesEpreuves;
+    }
+
+    public void setLesEpreuves(ArrayList<Epreuve> lesEpreuves) {
+        this.lesEpreuves = lesEpreuves;
+    }
+
+    public Epreuve getEpreuve() {
+        return epreuve;
+    }
+
+    public void setEpreuve(Epreuve epreuve) {
+        this.epreuve = epreuve;
     }
     
 }
