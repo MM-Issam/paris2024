@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sio.paris2024.model.Sport"%>
+<%@page import="sio.paris2024.model.Epreuve"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -35,24 +37,45 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
+				<a  href ='../ServletSport/lister' class="navbar-brand" href=".">Listes des sports</a>
 			</div>
 		</div>
 	</nav>
-    <body>
-        <div class="container special">
-            <h2 class="h2">Consulter des sports</h2>
-		<div class="table-responsive">
         <%
-                Sport s = (Sport)request.getAttribute("pSport");
+            Sport s = (Sport) request.getAttribute("pSport");
         %>
-        <h1><%  out.println(s.getNom());%></h1>
-            
-                         
-            <table>
-            <tr>
-                <td>Id: </td><td><%  out.println(s.getId());%></td>
-            </tr>
-           
-        </table>
+        <div class="container special">
+            <h2 class="h2">Liste des participants en <% out.println(s.getNom()); %></h2>
+	<div class="table-responsive">
+            <table class="table table-striped table-sm">  
+                <thead>
+                    <tr>             
+                        <th>id</th>
+                        <th>nom</th>              
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <%
+                        if (s != null && s.getLesEpreuves() != null) {
+                            for (Epreuve a : s.getLesEpreuves()) {
+                                out.println("<tr><td>");
+                                out.println(a.getId());
+                                out.println("</td>");
+
+                                out.println("<td>");
+                                out.println(a.getNom());
+                                out.println("</a></td>");;      
+                           
+                        }} else {
+                            out.println("Aucun athlète trouvé");
+                        }
+                    %>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+         </div>
+       </div>
+  
 </html>
