@@ -80,7 +80,7 @@ public class ServletSport extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+        @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -104,13 +104,13 @@ public class ServletSport extends HttpServlet {
            getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
         }
         
-         if(url.equals("/paris2024/ServletSport/ajouter"))
+          if(url.equals("/paris2024/ServletSport/ajouter"))
         {                   
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
             this.getServletContext().getRequestDispatcher("/vues/sport/ajouterSport.jsp" ).forward( request, response );
         }
         
-  
-       
         
     }
 
