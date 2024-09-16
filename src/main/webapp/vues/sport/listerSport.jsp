@@ -55,14 +55,14 @@
                 <tbody>
                     <tr>
                         <%
-                            for (Sport a : lesSports)
+                            for (Sport s : lesSports)
                             {              
                                 out.println("<tr><td>");
-                                out.println(a.getId());
+                                out.println(s.getId());
                                 out.println("</td>");
 
-                                out.println("<td><a href ='../ServletSport/consulterSport?idSport="+ a.getId()+ "'>");
-                                out.println(a.getNom());
+                                out.println("<td><a href ='../ServletSport/consulterSport?idSport="+ s.getId()+ "'>");
+                                out.println(s.getNom());
                                 out.println("</a></td>");;                        
                             }
                         %>
