@@ -37,7 +37,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a  href ='../ServletSport/lister' class="navbar-brand" href=".">Listes des sports</a>
+				<a  href ='../ServletSport/listerSport' class="navbar-brand" href=".">Listes des sports</a>
 			</div>
 		</div>
 	</nav>
@@ -45,7 +45,7 @@
             Sport s = (Sport) request.getAttribute("pSport");
         %>
         <div class="container special">
-            <h2 class="h2">Liste des participants en <% out.println(s.getNom()); %></h2>
+            <h2 class="h2">Liste des épreuve en <% out.println(s.getNom()); %></h2>
 	<div class="table-responsive">
             <table class="table table-striped table-sm">  
                 <thead>
