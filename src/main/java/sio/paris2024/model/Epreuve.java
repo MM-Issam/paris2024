@@ -12,10 +12,8 @@ import java.time.LocalDate;
 public class Epreuve {
     
     private int id;
-    private LocalDate DateNaiss;
     private String nom ;
-    private Pays pays ;
-    private String prenom;
+    private String sport ;
     public Epreuve() {
     }
 
