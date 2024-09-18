@@ -15,7 +15,6 @@ public class Sport {
     private String nom ;
     private ArrayList<Epreuve> lesEpreuves;
     private ArrayList<Sport> lesSports ;
-    private Epreuve epreuve;
     public Sport() {
     }
 
@@ -68,12 +67,6 @@ public class Sport {
         this.lesEpreuves = lesEpreuves;
     }
 
-    public Epreuve getEpreuve() {
-        return epreuve;
-    }
 
-    public void setEpreuve(Epreuve epreuve) {
-        this.epreuve = epreuve;
-    }
     
 }
