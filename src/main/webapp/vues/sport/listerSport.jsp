@@ -34,7 +34,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a  href ='../ServletSport/lister' class="navbar-brand" href=".">Système de gestion des sports</a>
+				<a  href ='../ServletSport/ajouter' class="navbar-brand" href=".">Ajouter un Sport</a>
 			</div>
 		</div>
 	</nav>
