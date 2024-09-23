@@ -33,7 +33,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a  href ='../ServletSport/listerSport' class="navbar-brand" href=".">Système de gestion des athlètes</a>
+				<a  href ='../ServletSport/listerSport' class="navbar-brand" href=".">Système de gestion des Sport</a>
 			</div>
 		</div>
 	</nav>
